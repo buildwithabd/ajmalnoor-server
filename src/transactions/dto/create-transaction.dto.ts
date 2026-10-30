@@ -1,7 +1,18 @@
-import { IsString, IsNumber, IsArray, IsEnum, IsDate } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsArray,
+  IsEnum,
+  IsDate,
+  IsOptional,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateTransactionDto {
+  @IsOptional()
+  @IsString()
+  receiptNumber?: string;
+
   @IsString()
   customerName!: string;
 

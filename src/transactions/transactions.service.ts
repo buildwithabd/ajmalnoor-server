@@ -12,7 +12,8 @@ export class TransactionsService {
   ) {}
 
   async create(dto: CreateTransactionDto): Promise<Transaction> {
-    const receiptNumber = await this.generateReceiptNumber(dto.saleDate);
+    const receiptNumber =
+      dto.receiptNumber ?? (await this.generateReceiptNumber(dto.saleDate));
 
     const transaction = new this.transactionModel({
       ...dto,
